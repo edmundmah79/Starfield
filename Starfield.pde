@@ -6,8 +6,8 @@ void setup()
 void draw()
 {
 	sue = new NormalParticle();
-	NormalParticle.move();
-	NormalParticle.show();
+	sue.move();
+	sue.show();
 }
 class NormalParticle
 {
@@ -20,7 +20,6 @@ class NormalParticle
 		pY = 300;
 		pSpeed = (Math.random()*5)-2;
 		pTheta = (Math.random()*2*Math.PI);
-		pColor = (0,255,0);
 	}
 	void move()
 	{
@@ -29,15 +28,16 @@ class NormalParticle
 	}
 	void show()
 	{
-		fill(pColor);
-		ellipse(pX,pY, 10,10);
+		fill(0,255,0);
+		ellipse((float)pX,(float)pY, 10,10);
 	}
 }
 interface Particle
 {
-	//your code here
+	public void move();
+	public void show();
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle //uses an interface
 {
 	//your code here
 }
@@ -45,4 +45,3 @@ class JumboParticle //uses inheritance
 {
 	//your code here
 }
-

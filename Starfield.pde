@@ -1,34 +1,50 @@
-NormalParticle sue;
+NormalParticle[] stars;
 void setup()
 {
 	//your code here
+	size(500,500);
+	stars = new NormalParticle[100];
+	for(int i = 0; i < 100; i++)
+	{
+		stars[i] = new NormalParticle();
+	}
 }
 void draw()
 {
-	sue = new NormalParticle();
-	sue.move();
-	sue.show();
+	background(255);
+	for(int i = 0; i < 100; i ++)
+	{
+		stars[i].move();
+		stars[i].show();
+	}
 }
-class NormalParticle
+class NormalParticle implements Particle 
 {
 	//your code here
 	double pX, pY, pSpeed, pTheta;
 	int pColor;
 	NormalParticle() 
 	{
-		pX = 300;
-		pY = 300;
+		pX = 250;
+		pY = 250;
 		pSpeed = (Math.random()*5)-2;
 		pTheta = (Math.random()*2*Math.PI);
+		pColor = color((int)(Math.random()*256), (int)(Math.random()*256), (int)(Math.random()*256));
 	}
-	void move()
+	public void move()
 	{
 		pX = pX + Math.cos(pTheta)*pSpeed;
 		pY = pY + Math.sin(pTheta)*pSpeed;   
+		if(pX < 0 || pX > 600 && pY < 0 || pY > 600)
+		{
+			pX = mouseX;
+			pY = mouseY;
+		}
 	}
-	void show()
+	public void show()
 	{
-		fill(0,255,0);
+		fill(pColor);
+		noStroke();
 		ellipse((float)pX,(float)pY, 10,10);
 	}
 }
@@ -37,7 +53,7 @@ interface Particle
 	public void move();
 	public void show();
 }
-class OddballParticle implements Particle //uses an interface
+class OddballParticle  //uses an interface
 {
 	//your code here
 }

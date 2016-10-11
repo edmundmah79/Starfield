@@ -45,9 +45,13 @@ class NormalParticle implements Particle
 	}
 	public void show()
 	{
-		fill(pColor);
-		noStroke();
-		triangle((float)(pX),(float)(pY),(float)(pX-3.2492),(float)(pY+10.5146),(float)(pX+3.2492),(float)(pY+10.5146));
+		strokeWeight(1);
+		stroke(pColor);
+		line((float)(pX),(float)(pY),(float)(pX-1.545),(float)(pY+4.755));
+		line((float)(pX),(float)(pY),(float)(pX+1.545),(float)(pY+4.755));
+		line((float)(pX+1.545),(float)(pY+4.755),(float)(pX-2.5),(float)(pX+1.816));
+		line((float)(pX-1.545),(float)(pY+4.755),(float)(pX+2.5),(float)(pX+1.816));
+		line((float)(pX+2.5),(float)(pX+1.816),(float)(pX-2.5),(float)(pX+1.816));
 	}
 }
 interface Particle
@@ -89,6 +93,6 @@ class JumboParticle extends NormalParticle //uses inheritance
 	//your code here
 	public void show()
 	{
-
+		triangle((float)(pX),(float)(pY),(float)(pX-3.2492),(float)(pY+10.5146),(float)(pX+3.2492),(float)(pY+10.5146));
 	}
 }
